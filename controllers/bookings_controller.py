@@ -20,3 +20,42 @@ def bookings():
 	return render_template("bookings/index.html", bookings = bookings)
 
 
+@bookings_blueprint.route("/bookings/new")
+def new_booking():
+	return render_template("bookings/new.html")
+
+
+@bookings_blueprint.route("/bookings/<id>")
+def show_booking(id):
+	booking = bookings_repository.select(id)
+	if booking is None:
+		return render_template("/bookings/404.html")
+#	members = gymclass_repository.select_booked_members_for_class(gymclass.id)
+#	return render_template("/classes/show.html",
+#		id = id,
+#		total_classes = gymclass_repository.number_of_classes(),
+#		gymclass=gymclass,
+#		members=members)
+	
+	
+@bookings_blueprint.route("/bookings/<id>/edit", methods=['GET'])
+def edit_booking(id):
+    return render_template('bookings/edit.html', booking = booking)
+
+
+
+
+@bookings_blueprint.route("/bookings", methods=['POST'])
+def create_booking():
+    return redirect('/bookings')
+
+
+@bookings_blueprint.route("/bookings/<id>", methods=['POST'])
+def update_booking(id):
+    return redirect('/bookings')
+
+
+@bookings_blueprint.route("/bookings/<id>/delete", methods=['POST'])
+def delete_booking(id):
+    return redirect('/bookings')
+

@@ -15,4 +15,17 @@ class Gymclass():
 	
 	def __repr__(self):
 		return f"(Gymclass_{self.id}: {self.name}, {self.capacity} capacity, {self.event_time})"
-		
+	
+	@classmethod
+	def time_slots(cls):
+		times = ["09:00",
+				"11:00",
+				"12:00",
+				"13:00",
+				"14:00",
+				"15:00",
+				"16:00",
+				"17:00",
+				"18:00",
+				"19:00"]
+		return times

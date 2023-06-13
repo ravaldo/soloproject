@@ -21,24 +21,43 @@ def members():
 
 @members_blueprint.route("/members/new", methods=['GET'])
 def new_member():
-    return render_template("members/new.html")
-
-@members_blueprint.route("/members",  methods=['POST'])
-def create_member():
-    return redirect('/members')
+	return render_template("members/new.html")
 
 @members_blueprint.route("/members/<id>", methods=['GET'])
 def show_member(id):
-    return render_template('members/show.html', member = member)
+	member = member_repository.select(id)
+	return render_template('members/show.html',
+		id = id,
+		total_members = member_repository.number_of_members(),
+		member = member)
 
 @members_blueprint.route("/members/<id>/edit", methods=['GET'])
 def edit_member(id):
-    return render_template('members/edit.html', member = member)
+	member = member_repository.select(id)
+	membertypes = membertype_repository.select_all()
+	return render_template('members/edit.html', member=member, membertypes=membertypes)	
+	
+@members_blueprint.route("/members",  methods=['POST'])
+def create_member():
+	name = request.form["name"]
+	dob = request.form["dob"]
+	membertype_id = request.form["membertype_id"]
+	membertype = membertype_repository.select(membertype_id)
+	member = Member(name, dob, membertype,)
+	member = member_repository.save(member)
+	return redirect(f'/members/{member.id}')
 
 @members_blueprint.route("/members/<id>", methods=['POST'])
 def update_member(id):
-    return redirect('/members')
+	name = request.form["name"]
+	dob = request.form["dob"]
+	membertype_id = request.form["membertype_id"]
+	membertype = membertype_repository.select(membertype_id)
+	member = Member(name, dob, membertype, id)
+	member_repository.update(member)
+	return redirect(f'/members/{id}')
 
 @members_blueprint.route("/members/<id>/delete", methods=['POST'])
 def delete_member(id):
-    return redirect('/members')
+	member_repository.delete(id)
+	return redirect('/members')	

@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block content %}
+	
+	<div class="content">
+		<h3>New Gym Class</h3>
+		<form action="/classes" method="POST">
+			<div>
+				<label for="name"">Name</label>
+				<input type="text" name="name" id="name" value="">
+			</div>
+			<div>
+				<label for="class_date"">Date</label>
+				<input type="date" id="class_date" name="class_date"
+					value=""
+					min="2023-01-01"
+					max="2024-12-31">
+			</div>
+			<div>
+				<label for="class_time"">Time</label>
+				<select id="class_time" name="class_time">
+					{% for t in slots %}
+					<option value="{{t}}">{{t}}</option>
+					{% endfor %}
+				</select>
+			</div>
+			<div>
+				<label for="capacity"">Capacity</label>
+				<input type="number" name="capacity" id="capacity" min="0" max="100" value="">
+			</div>
+			<button type="submit">Add</button>
+		</form>
+	</div>
+	
+
+{% endblock %}

@@ -38,6 +38,13 @@ def select(id):
 		member = Member(result["name"], result["date_of_birth"], membertype, result["id"])
 	return member
 
+
+def number_of_members(): # hopefully faster than doing len(repo.select_all)
+	sql = "SELECT COUNT (*) FROM members;"
+	results = run_sql(sql)
+	return results[0]["count"]
+
+
 def select_booked_classes_for_member(id):
 	gymclasses = []
 	sql = '''SELECT *

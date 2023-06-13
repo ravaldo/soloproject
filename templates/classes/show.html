@@ -4,11 +4,19 @@
 {% block content %}
 	
 	
-	<div class="class-main">
+	<div class="content">
 		
 		<div class="arrows">
-			<i class="fa-solid fa-arrow-left"></i>
-			<i class="fa-solid fa-arrow-left fa-2x"></i>
+			<a href="/classes/{{id|int - 1}}" 
+				{% if id|int <= 1 %}
+					class="disabled-link"
+				{% endif %}
+				><div><i class="fa-solid fa-arrow-left fa-2x"></i></div></a>
+			<a href="/classes/{{id|int + 1}}"
+				{% if id|int >= total_classes %}
+					class="disabled-link"
+				{% endif %}
+				><div><i class="fa-solid fa-arrow-right fa-2x"></i></div></a>
 		</div>
 
 	
@@ -35,10 +43,10 @@
 			</div>
 
 		
-		<div class="members-list">
+		<div class="booked-members-list">
 			<ul>
 				{% for m in members %}
-					<li>{{m.name}} <a href="durr"><i class="fa fa-trash-o fa-2x"></i></a></li>
+					<li>{{m.name}} <a href="durr"><i class="fa-solid fa-trash-can fa-xl"></i></a></li>
 				{% endfor %}
 			</ul>
 		</div>

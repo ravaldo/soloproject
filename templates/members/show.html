@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block content %}
+	
+	<div class="content">
+		
+		<div class="arrows">
+			<a href="/members/{{id|int - 1}}" 
+				{% if id|int <= 1 %}
+					class="disabled-link"
+				{% endif %}
+				><div><i class="fa-solid fa-arrow-left fa-2x"></i></div></a>
+			<a href="/members/{{id|int + 1}}"
+				{% if id|int >= total_members %}
+					class="disabled-link"
+				{% endif %}
+				><div><i class="fa-solid fa-arrow-right fa-2x"></i></div></a>
+		</div>
+		
+		{% if member.membertype.name == "Gold" %}
+		{% set badgecol = "#FFE10A" %}
+		{% elif member.membertype.name == "Silver" %}
+		{% set badgecol = "#C0C0C0" %}
+		{% endif %}
+		
+		<div class="member-details">
+			<h2>{{member.name}}</h2>
+			<p>{{member.date_of_birth.strftime('%d/%m/%Y')}}</p>
+			<p><span><i class="fa-solid fa-certificate" style="color: {{badgecol}};"></i></span>{{member.membertype.name}}</p>
+			
+		</div>
+	</div>
+{% endblock %}

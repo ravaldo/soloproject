@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+
+{% block content %}
+	
+	<div class="content">
+		<h3>Edit Gym Class</h3>
+		<form action="/classes/{{gymclass.id}}" method="POST">
+			<div>
+				<label for="name"">Name</label>
+				<input type="text" name="name" id="name" value="{{gymclass.name}}">
+			</div>
+			<div>
+				<label for="class_date"">Date</label>
+				<input type="date" id="class_date" name="class_date"
+					value="{{gymclass.event_time.strftime('%Y-%m-%d')}}"
+					min="2023-01-01"
+					max="2024-12-31">
+			</div>
+			<div>
+				<label for="class_time"">Time</label>
+				<select id="class_time" name="class_time">
+					{% for t in slots %}
+					<option value="{{t}}" 
+						{% if t == gymclass.event_time.strftime('%H:%M') %}selected="selected"{% endif %}
+					>{{t}}</option>
+					{% endfor %}
+				</select>
+			</div>
+			<div>
+				<label for="capacity"">Capacity</label>
+				<input type="number" name="capacity" id="capacity" min="0" max="100" value="{{gymclass.capacity}}">
+			</div>
+			<button type="submit">Update</button>
+			<button type="submit" formaction="/classes/{{gymclass.id}}/delete">Delete</button>
+		</form>
+		
+		
+		<h2>{{gymclass.name}}</h2>
+		<p>{{gymclass.event_time.strftime('%Y-%m-%d (%a)')}}</p>
+		<p>{{gymclass.event_time.strftime('%I:%M %p')}}</p>
+		<p>Capacity: {{gymclass.capacity}}</p>
+		
+		
+		{% set available = members|length %}
+		{% set remaining = gymclass.capacity - members|length %}
+		<div class="availability">
+			<div class="booked" style="flex: {{available}};">
+				{% if available > 0 %}
+					{{available}}
+				{% endif %}
+			</div>
+			<div class="remaining" style="flex: {{remaining}};">
+				{% if remaining > 0 %}
+					{{remaining}}
+				{% endif %}
+			</div>
+		</div>
+
+	</div>
+	
+
+{% endblock %}

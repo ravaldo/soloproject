@@ -34,6 +34,11 @@ def select(id):
 		gymclass = Gymclass(result["name"], result["event_time"], result["capacity"], result['id'])
 	return gymclass
 	
+
+def number_of_classes(): # hopefully faster than doing len(repo.select_all)
+	sql = "SELECT COUNT (*) FROM classes;"
+	results = run_sql(sql)
+	return results[0]["count"]
 	
 def select_booked_members_for_class(id):
 	members = []
