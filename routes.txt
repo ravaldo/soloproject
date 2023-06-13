@@ -1,0 +1,7 @@
+index	/tasks			GET	display list of tasks		index.html
+new	/tasks/new		GET	show form to make new tasks	new.html
+create	/tasks			POST	add new task to database		redirect /tasks
+show	/tasks/<id>		GET	show info about one task	show.html
+edit	/tasks/<id>/edit	GET	show edit form of one task	edit.html
+update	/tasks/<id>		POST	update a particular task		redirect /tasks
+destroy	/tasks/<id>/delete	POST	delete a particular task		redirect /tasks

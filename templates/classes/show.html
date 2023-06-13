@@ -1,0 +1,49 @@
+
+{% extends "base.html" %}
+
+{% block content %}
+	
+	
+	<div class="class-main">
+		
+		<div class="arrows">
+			<i class="fa-solid fa-arrow-left"></i>
+			<i class="fa-solid fa-arrow-left fa-2x"></i>
+		</div>
+
+	
+		<div class="class-details">
+			<h2>{{gymclass.name}}</h2>
+			<p>{{gymclass.event_time.strftime('%Y-%m-%d (%a)')}}</p>
+			<p>{{gymclass.event_time.strftime('%I:%M %p')}}</p>
+			<p>Capacity: {{gymclass.capacity}}</p>
+			
+			
+			{% set available = members|length %}
+			{% set remaining = gymclass.capacity - members|length %}
+			<div class="availability">
+				<div class="booked" style="flex: {{available}};">
+					{% if available > 0 %}
+						{{available}}
+					{% endif %}
+				</div>
+				<div class="remaining" style="flex: {{remaining}};">
+					{% if remaining > 0 %}
+						{{remaining}}
+					{% endif %}
+				</div>
+			</div>
+
+		
+		<div class="members-list">
+			<ul>
+				{% for m in members %}
+					<li>{{m.name}} <a href="durr"><i class="fa fa-trash-o fa-2x"></i></a></li>
+				{% endfor %}
+			</ul>
+		</div>
+		
+	</div>
+	
+
+{% endblock %}

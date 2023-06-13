@@ -1,0 +1,133 @@
+body{
+  font-family: "Helvetica", arial, sans-serif;
+/*  font-size: 16px;*/
+  margin: 0;
+}
+
+
+
+div.class-main {
+	width: 250px;
+	margin: auto;
+}
+
+div.availability {
+	display: flex;
+	height: 20px;
+	background-color: #CCC;
+	border: 1px solid black;
+	border-radius: 20px;
+	overflow: hidden;
+/*	font-size: 17px;*/
+/*	font-weight: bold;*/
+}
+div.availability > div.booked {
+	background-color: #FF6962;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+div.availability > div.remaining {
+	background-color: #8BCEA2;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+div.members-list i {
+	color:  #f78536;
+}
+
+div.members-list li {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	border-bottom: 1px solid #DDD;
+	margin: 2px 0;
+}
+
+
+div.book-list {
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: space-around;
+	gap: 40px;
+	margin-left: 80px;
+	margin-right: 80px;
+
+}
+
+div.book-list div.book {
+	background-color: #dff;
+	padding: 15px;
+	border: 1px solid black;
+	border-radius: 10px;
+	width: 190px;
+}
+
+div.input_forms {
+	margin-top: 50px;
+	display: flex;
+	flex-direction: column;
+	gap: 40px;
+	align-items: center;
+}
+
+div.new_author {
+	width: 50vw;
+	background-color: #e0bbe4;
+	padding: 15px;
+	border: 1px solid black;
+	border-radius: 10px;
+	display: flex;
+	flex-direction: column;
+}
+
+div.new_book {
+	width: 50vw;
+	background-color: #faa;
+	padding: 15px;
+	border: 1px solid black;
+	border-radius: 10px;
+}
+
+div.input_forms form div {
+	display: flex;
+	justify-content: space-between;
+}
+
+div.input_forms form div input,
+div.input_forms form div select
+{
+  width : 70%;
+/*  font-size: 100%;*/
+/*  padding: 10px;*/
+/*  margin: 10px;*/
+  box-sizing: border-box;
+}
+
+
+nav {
+	background-color: #aaa;
+	height: 2.5em;
+	display: flex;
+	align-items: center;
+	margin: 0px 0px 50px 0px;
+}
+
+nav a, nav a:link, nav a:visited {		
+	color: #2ff;
+/*	display: block;*/
+/*	float: left;*/
+	padding: 14px 16px;
+	font-size: 1.1em;
+	font-weight: bold;
+}
+
+nav a:hover {
+	background-color: #8c1aff;
+}
+
+a {
+	text-decoration: none;
+}

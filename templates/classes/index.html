@@ -1,0 +1,13 @@
+
+{% extends "base.html" %}
+
+{% block content %}
+	
+	<div class="gymclass-list">
+		{% for gymclass in gymclasses %}
+			<p>{{gymclass}}</p>
+			
+		{% endfor %}
+	</div>
+
+{% endblock %}
