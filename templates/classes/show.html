@@ -20,15 +20,17 @@
 		</div>
 
 	
-		<div class="class-details">
-			<h2>{{gymclass.name}}</h2>
+		<div class="show-details">
+			<header>
+				<h2>{{gymclass.name}}</h2>
+				<a href="/classes/{{gymclass.id}}/edit"><i class="fas fa-edit fa-2xl"></i></a>
+			</header>
 			<p>{{gymclass.event_time.strftime('%Y-%m-%d (%a)')}}</p>
 			<p>{{gymclass.event_time.strftime('%I:%M %p')}}</p>
 			<p>Capacity: {{gymclass.capacity}}</p>
 			
-			
-			{% set available = members|length %}
-			{% set remaining = gymclass.capacity - members|length %}
+			{% set available = booked_members|length %}
+			{% set remaining = gymclass.capacity - booked_members|length %}
 			<div class="availability">
 				<div class="booked" style="flex: {{available}};">
 					{% if available > 0 %}
@@ -44,11 +46,25 @@
 
 		
 		<div class="booked-members-list">
+			<h3>Booked members</h3>
 			<ul>
-				{% for m in members %}
-					<li>{{m.name}} <a href="durr"><i class="fa-solid fa-trash-can fa-xl"></i></a></li>
+				{% for m in booked_members %}
+					<li>{{m.name}} <a href="/classes/{{gymclass.id}}/remove/{{m.id}}"><i class="fa-solid fa-trash-can fa-xl"></i></a></li>
 				{% endfor %}
 			</ul>
+		</div>
+		
+		
+		<div class="unbooked-members-list">
+			<h3>Register members to class</h3>
+			<form action="/classes/{{gymclass.id}}/register" method="POST">
+				<select multiple id="memberlist" name="memberlist" size="20">
+					{% for m in unbooked_members %}
+						<option value="{{m.id}}">{{m.name}}</option>
+					{% endfor %}
+				</select>
+				<button type="submit">Add Members</button>
+			</form>
 		</div>
 		
 	</div>

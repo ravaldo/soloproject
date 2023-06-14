@@ -2,15 +2,56 @@ body{
   font-family: "Helvetica", arial, sans-serif;
   font-size: 16px;
   margin: 0;
+  background-color: #f8e5e1 ;
 }
 
-
+body footer {
+	height: 50px;
+}
 
 div.content {
-	width: 250px;
+	width: 400px;
 	margin: auto;
 }
 
+
+
+/*#############################################################*/
+
+div.content > header {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-bottom: 20px;
+	gap: 10px;
+	colour: #f78536;
+}
+
+div.content > header > a:link,
+div.content > header > a:visited {		
+	color: #f78536;
+}
+
+
+div.content > div.arrows {
+	display: flex;
+	justify-content: stretch;
+	align-items: center;
+	gap: 5px;
+}
+div.arrows > a {
+	flex: 5;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: #3dd;
+	border-radius: 10px;
+}
+div.arrows > a.disabled-link {
+	pointer-events: none;
+	background-color: #999;
+	color: #999;
+}
 div.availability {
 	display: flex;
 	height: 20px;
@@ -18,7 +59,6 @@ div.availability {
 	border: 1px solid black;
 	border-radius: 20px;
 	overflow: hidden;
-/*	font-size: 17px;*/
 /*	font-weight: bold;*/
 }
 div.availability > div.booked {
@@ -34,27 +74,19 @@ div.availability > div.remaining {
 	align-items: center;
 }
 
-div.content > div.arrows {
-	display: flex;
-	justify-content: stretch;
-	align-items: center;
-	gap: 5px;
+
+
+
+
+/*#############################################################*/
+
+div.booked-members-list ul {
+	padding-left: 0;
+	list-style-type: none;
 }
-
-div.arrows > a {
-	flex: 5;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	background-color: #3dd;
-	border-radius: 10px;
-}	
-
-
 div.booked-members-list i {
 	color:  #f78536;
 }
-
 div.booked-members-list li {
 	display: flex;
 	align-items: center;
@@ -64,27 +96,32 @@ div.booked-members-list li {
 	padding: 5px 0;
 }
 
-div.arrows > a.disabled-link {
-	pointer-events: none;
-	background-color: #909090;
-	color: #909090;
+/*#############################################################*/
+
+table.mainlist {
+	width: 100%;
+	border-collapse: collapse;
+}
+tr:hover {
+	background-color: coral;
 }
 
+/*#############################################################*/
 
+div.show-details > header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-top: 10px;
+/*	background-color: coral;*/
+/*	border: 1px solid #DDD;*/
+}
 
+div.show-details > header i {
+	color:  #f78536;
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
+/*#############################################################*/
 
 nav {
 	background-color: #aaa;
@@ -95,6 +132,7 @@ nav {
 }
 
 nav a, nav a:link, nav a:visited {		
+/*	color: #f78536;*/
 	color: #2ff;
 /*	display: block;*/
 /*	float: left;*/
@@ -111,72 +149,61 @@ a {
 	text-decoration: none;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-div.book-list {
-	display: flex;
-	flex-flow: row wrap;
-	justify-content: space-around;
-	gap: 40px;
-	margin-left: 80px;
-	margin-right: 80px;
-
-}
-
-div.book-list div.book {
-	background-color: #dff;
-	padding: 15px;
-	border: 1px solid black;
-	border-radius: 10px;
-	width: 190px;
-}
-
-div.input_forms {
+/*#############################################################*/
+div.content > form {
 	margin-top: 50px;
 	display: flex;
 	flex-direction: column;
-	gap: 40px;
-	align-items: center;
+	justify-content: space-around;
 }
-
-div.new_author {
-	width: 50vw;
-	background-color: #e0bbe4;
-	padding: 15px;
-	border: 1px solid black;
-	border-radius: 10px;
-	display: flex;
-	flex-direction: column;
-}
-
-div.new_book {
-	width: 50vw;
-	background-color: #faa;
-	padding: 15px;
-	border: 1px solid black;
-	border-radius: 10px;
-}
-
-div.input_forms form div {
+div.content > form div {
 	display: flex;
 	justify-content: space-between;
+	align-items: center;
+}
+div.content > form div input,
+div.content > form div select {
+	width : 70%;
+	padding: 8px;
+	box-sizing: border-box;
 }
 
-div.input_forms form div input,
-div.input_forms form div select
-{
-  width : 70%;
-/*  font-size: 100%;*/
-/*  padding: 10px;*/
-/*  margin: 10px;*/
-  box-sizing: border-box;
+div.content > form button {
+	margin-top: 8px;
+	padding: 6px;: 
+}
+
+div.inset {
+	margin: 40px;
+	padding: 15px;
+	border: 1px solid gray;
+	border-radius: 10px;
+	background-color: #eee;
+}
+
+/*#############################################################*/
+
+div.unbooked-members-list > form > select,
+div.unbooked-members-list > form > button {
+	width: 100%;
+}
+div.booked-members-list h3,
+div.unbooked-members-list h3 {
+	text-align: center;
+}
+
+div.booked-members-list {
+	margin: 20px 0;
+	padding: 15px;
+	border: 1px solid gray;
+	border-radius: 10px;
+	background-color: #eee;
+}
+
+/*#############################################################*/
+
+
+div.error {
+	text-align: center;
+	font-size: 300%;
 }

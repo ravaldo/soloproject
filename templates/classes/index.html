@@ -3,11 +3,37 @@
 
 {% block content %}
 	
-	<div class="gymclass-list">
-		{% for gymclass in gymclasses %}
-			<p>{{gymclass}}</p>
-			
-		{% endfor %}
+	<div class="content">
+		
+		<header>
+			<a href="/classes/new" style="display:contents">
+			<i class="fa-solid fa-square-plus fa-2xl"></i>
+			<h3>Add new class</h3>
+			</a>
+		</header>
+		<table class="mainlist">
+			<thead>
+				<tr>
+					<th>Name</th>
+					<th>Date</th>
+					<th style="text-align: center">Time</th>
+					<th>Availability</th>
+				</tr>
+			</thead>
+			<tbody>
+			{% for gymclass in gymclasses %}
+				
+					<tr>
+					<td><a href="/classes/{{ gymclass.id }}">{{ gymclass.name }}</a></td>
+					<td>{{ gymclass.event_time.strftime('%Y-%m-%d') }}</td>
+					<td style="text-align: center">{{ gymclass.event_time.strftime('%H:%M') }}</td>
+					<td style="text-align: right">{{ occupancy[loop.index0] }} / {{gymclass.capacity}}</td>
+					</tr>
+				
+			{% endfor %}
+			</tbody>
+		</table>
 	</div>
-
+	
+  
 {% endblock %}

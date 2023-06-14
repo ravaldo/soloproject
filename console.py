@@ -1,4 +1,4 @@
-import datetime
+import datetime, random
 
 from models.membertype import MemberType
 from models.member import Member
@@ -39,7 +39,8 @@ import repositories.booking_repository as booking_repository
 ###member_repository.delete_all()
 #print(member_repository.select_all())
 ###member_repository.delete(member_1.id)
-#print(member_repository.select_all())
+#print(insert into bookings (member_id, class_id) values ((select id from members order by random() limit 1), 2);
+
 #
 #class_1 = Gymclass('CrossFit', "2023-06-18 14:00:00", 20)
 #gymclass_repository.save(class_1)
@@ -73,6 +74,25 @@ import repositories.booking_repository as booking_repository
 #print(gymclass_repository.select_booked_members_for_class(class_1.id))
 #print("\n\n\n")
 #print(membertype_repository.select_members_of_membertype(membertype_gold.id))
-print(f"total number of classes: {gymclass_repository.number_of_classes()}")
+#print(f"total number of classes: {gymclass_repository.number_of_classes()}")
+#
+
+
+
+booking_repository.delete_all()
+members = member_repository.select_all()
+classes = gymclass_repository.select_all()
+random.seed()
+
+for c in classes:
+	added_members = []
+	for _ in range(0, random.randrange(10, c.capacity)):
+		member = random.choice(members)
+		if member.id in added_members:
+			continue
+		added_members.append(member.id)
+		booking_repository.save(Booking(member, c))
+		
+
 
 

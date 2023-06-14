@@ -4,12 +4,11 @@
 	
 	<div class="content">
 		
-		<div class="member-details">
 			<h3>New Member</h3>
-			<form action="/members/{{member.id}}" method="POST">
+			<form action="/members" method="POST">
 				<div>
 					<label for="name"">Name</label>
-					<input type="text" name="name" id="name" value="{{member.name}}">
+					<input type="text" name="name" id="name" value="">
 				</div>
 				<div>
 					<label for="dob"">Date</label>
@@ -19,14 +18,15 @@
 						max="2028-12-31">
 				</div>
 				<div>
-					{% for type in membertypes %}
-						<input type="radio" id="{{type.name}}" name="membertype_id" value="{{type.id}}">
-						<label for="{{type.name}}">{{type.name}}</label><br>
-					{% endfor %}
+					<label for="membertype_id"">Membership</label>
+					<select id="membertype_id" name="membertype_id">
+						{% for type in membertypes %}
+							<option value="{{type.id}}">{{type.name}}</option>
+						{% endfor %}
+					</select>
 				</div>
 				<button type="submit">Add</button>
 			</form>
-		</div>
 	</div>
 	
 

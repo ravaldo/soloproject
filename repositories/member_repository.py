@@ -14,11 +14,12 @@ def save(member):
 	results = run_sql(sql, values)
 	id = results[0]['id']
 	member.id = id
+	return member
 
 
 def select_all():
 	members = []
-	sql = "SELECT * FROM members"
+	sql = "SELECT * FROM members ORDER BY name;"
 	results = run_sql(sql)
 	for result in results:
 		membertype = membertype_repository.select(result["membertype_id"])
@@ -39,7 +40,7 @@ def select(id):
 	return member
 
 
-def number_of_members(): # hopefully faster than doing len(repo.select_all)
+def number_of_members(): # presumably faster than doing len(repo.select_all)
 	sql = "SELECT COUNT (*) FROM members;"
 	results = run_sql(sql)
 	return results[0]["count"]

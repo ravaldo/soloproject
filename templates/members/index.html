@@ -3,9 +3,17 @@
 
 {% block content %}
 	
-	<div class="members-list">
+	<div class="content">
+	
+		<header>
+			<a href="/members/new" style="display:contents">
+			<i class="fa-solid fa-square-plus fa-2xl"></i>
+			<h3>Add new member</h3>
+			</a>
+		</header>
+	
 		{% for member in members %}
-			<p>{{member}}</p>
+			<p><a href=/members/{{member.id}}>{{member.name}}</a></p>
 			
 		{% endfor %}
 	</div>

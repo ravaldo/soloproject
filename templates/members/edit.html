@@ -4,7 +4,6 @@
 
 	<div class="content">
 		
-		<div class="member-details">
 			<h3>Edit Member</h3>
 			<form action="/members/{{member.id}}" method="POST">
 				<div>
@@ -19,15 +18,18 @@
 						max="2028-12-31">
 				</div>
 				<div>
-					{% for type in membertypes %}
-						<input type="radio" id="{{type.name}}" name="membertype_id" value="{{type.id}}">
-						<label for="{{type.name}}">{{type.name}}</label><br>
-					{% endfor %}
+					<label for="membertype_id"">Membership</label>
+					<select id="membertype_id" name="membertype_id">
+						{% for type in membertypes %}
+						<option value="{{type.id}}" 
+							{% if type.id == member.membertype.id %} selected="selected"{% endif %}
+						>{{type.name}}</option>
+						{% endfor %}
+					</select>
 				</div>
 				<button type="submit">Update</button>
 				<button type="submit" formaction="/members/{{member.id}}/delete">Delete</button>
 			</form>
-		</div>
 	</div>
 	
 

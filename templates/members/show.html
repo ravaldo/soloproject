@@ -23,10 +23,14 @@
 		{% set badgecol = "#C0C0C0" %}
 		{% endif %}
 		
-		<div class="member-details">
-			<h2>{{member.name}}</h2>
+		<div class="show-details">
+			<header>
+				<h2>{{member.name}}</h2>
+				<a href="/members/{{member.id}}/edit"><i class="fas fa-edit fa-2xl"></i></a>
+			</header>
+			
 			<p>{{member.date_of_birth.strftime('%d/%m/%Y')}}</p>
-			<p><span><i class="fa-solid fa-certificate" style="color: {{badgecol}};"></i></span>{{member.membertype.name}}</p>
+			<p><span><i class="fa-solid fa-certificate fa-xl" style="color: {{badgecol}};"></i>&nbsp;&nbsp;</span>{{member.membertype.name}} Membership</p>
 			
 		</div>
 	</div>

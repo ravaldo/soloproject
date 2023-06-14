@@ -21,11 +21,14 @@ def members():
 
 @members_blueprint.route("/members/new", methods=['GET'])
 def new_member():
-	return render_template("members/new.html")
+	membertypes = membertype_repository.select_all()
+	return render_template("members/new.html", membertypes=membertypes)	
 
 @members_blueprint.route("/members/<id>", methods=['GET'])
 def show_member(id):
 	member = member_repository.select(id)
+	if member is None:
+		return render_template("/404.html")
 	return render_template('members/show.html',
 		id = id,
 		total_members = member_repository.number_of_members(),
@@ -41,10 +44,12 @@ def edit_member(id):
 def create_member():
 	name = request.form["name"]
 	dob = request.form["dob"]
+	print(dob)
 	membertype_id = request.form["membertype_id"]
 	membertype = membertype_repository.select(membertype_id)
-	member = Member(name, dob, membertype,)
+	member = Member(name, dob, membertype)
 	member = member_repository.save(member)
+	print(member)
 	return redirect(f'/members/{member.id}')
 
 @members_blueprint.route("/members/<id>", methods=['POST'])

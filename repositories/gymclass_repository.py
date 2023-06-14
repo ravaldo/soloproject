@@ -35,7 +35,7 @@ def select(id):
 	return gymclass
 	
 
-def number_of_classes(): # hopefully faster than doing len(repo.select_all)
+def number_of_classes():
 	sql = "SELECT COUNT (*) FROM classes;"
 	results = run_sql(sql)
 	return results[0]["count"]
@@ -58,6 +58,18 @@ def select_booked_members_for_class(id):
 		members.append(member)
 	return members
 
+
+def count_bookings_for_class(id):
+	sql = '''SELECT COUNT(*)
+			FROM classes
+			JOIN bookings ON classes.id = bookings.class_id
+			JOIN members ON members.id = bookings.member_id
+			WHERE classes.id = %s;
+			'''
+	values = [id]
+	results = run_sql(sql, values)
+	return results[0]["count"]
+	
 
 def delete_all():
 	sql = "DELETE FROM classes"

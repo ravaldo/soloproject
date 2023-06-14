@@ -51,6 +51,17 @@ def delete(id):
 	run_sql(sql, values)
 
 
+def remove_member_from_class(class_id, member_id):
+	sql = "DELETE FROM bookings WHERE member_id = %s AND class_id = %s";
+	values = [member_id, class_id]
+	run_sql(sql, values)
+
+def add_member_to_class(member_id, class_id):
+	sql = "INSERT INTO bookings (member_id, class_id) VALUES (%s, %s) RETURNING id"
+	values = [member_id, class_id]
+	run_sql(sql, values)
+
+
 def update(booking):
 	sql = "UPDATE bookings SET (member_id, class_id) = (%s, %s) WHERE id = %s"
 	values = [booking.member.id, booking.gymclass.id, booking.id]
