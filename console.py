@@ -84,10 +84,14 @@ members = member_repository.select_all()
 classes = gymclass_repository.select_all()
 random.seed()
 
-for c in classes:
+
+
+for c in classes:  # for every gymclass
 	added_members = []
+	# add somewhere between 10 and max members
 	for _ in range(0, random.randrange(10, c.capacity)):
 		member = random.choice(members)
+		# don't add a member already added
 		if member.id in added_members:
 			continue
 		added_members.append(member.id)

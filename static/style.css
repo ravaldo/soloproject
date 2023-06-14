@@ -17,7 +17,7 @@ div.content {
 
 
 /*#############################################################*/
-
+/*header in index.html*/
 div.content > header {
 	display: flex;
 	justify-content: center;
@@ -32,7 +32,7 @@ div.content > header > a:visited {
 	color: #f78536;
 }
 
-
+/*arrows and availability in show.html*/
 div.content > div.arrows {
 	display: flex;
 	justify-content: stretch;
@@ -75,11 +75,9 @@ div.availability > div.remaining {
 }
 
 
-
-
-
 /*#############################################################*/
 
+/*show.html*/
 div.booked-members-list ul {
 	padding-left: 0;
 	list-style-type: none;
@@ -97,7 +95,7 @@ div.booked-members-list li {
 }
 
 /*#############################################################*/
-
+/*index.html*/
 table.mainlist {
 	width: 100%;
 	border-collapse: collapse;
@@ -107,7 +105,7 @@ tr:hover {
 }
 
 /*#############################################################*/
-
+/*show.html*/
 div.show-details > header {
 	display: flex;
 	justify-content: space-between;
@@ -122,27 +120,52 @@ div.show-details > header i {
 }
 
 /*#############################################################*/
-
-nav {
-	background-color: #aaa;
-	height: 2.5em;
+/*base.html*/
+body > header {
 	display: flex;
 	align-items: center;
-	margin: 0px 0px 50px 0px;
+	justify-content: space-between;
+	background-color: #aaa;
+	padding-right: 30px;
+/*	height: 2em;*/
+}
+
+body > header > h1 {
+	margin-left: 20px;
+	color: white;
+}
+
+#logo {
+	width: 80px;
+	height: 80px;
+}
+
+#blurb {
+	text-align: justify;
+	text-justify: inter-word;
+
+}
+
+div.content #brand {
+	width: 400px;
+}
+
+
+div.images img {
+	width: 400px;
+
 }
 
 nav a, nav a:link, nav a:visited {		
 /*	color: #f78536;*/
-	color: #2ff;
-/*	display: block;*/
-/*	float: left;*/
+	color: #fff;
 	padding: 14px 16px;
 	font-size: 1.1em;
 	font-weight: bold;
 }
 
 nav a:hover {
-	background-color: #8c1aff;
+	background-color: #ffb347;
 }
 
 a {
@@ -150,6 +173,7 @@ a {
 }
 
 /*#############################################################*/
+
 div.content > form {
 	margin-top: 50px;
 	display: flex;
@@ -168,6 +192,7 @@ div.content > form div select {
 	box-sizing: border-box;
 }
 
+div.unbooked-members-list > form > button,
 div.content > form button {
 	margin-top: 8px;
 	padding: 6px;: 
@@ -182,7 +207,7 @@ div.inset {
 }
 
 /*#############################################################*/
-
+/*classes show.html*/
 div.unbooked-members-list > form > select,
 div.unbooked-members-list > form > button {
 	width: 100%;
@@ -198,6 +223,14 @@ div.booked-members-list {
 	border: 1px solid gray;
 	border-radius: 10px;
 	background-color: #eee;
+}
+
+div.content > div.member-list {
+	height: 70vh;
+	overflow-x:hidden;
+	overflow-y:auto;
+
+
 }
 
 /*#############################################################*/

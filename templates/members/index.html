@@ -11,11 +11,13 @@
 			<h3>Add new member</h3>
 			</a>
 		</header>
-	
+		
+		<div class="member-list">
 		{% for member in members %}
 			<p><a href=/members/{{member.id}}>{{member.name}}</a></p>
 			
 		{% endfor %}
+		</div>
 	</div>
 
 {% endblock %}
