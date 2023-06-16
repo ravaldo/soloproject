@@ -1,0 +1,26 @@
+DROP TABLE IF EXISTS bookings;
+DROP TABLE IF EXISTS members;
+DROP TABLE IF EXISTS membertypes;
+DROP TABLE IF EXISTS classes;
+
+CREATE TABLE membertypes(
+	id SERIAL PRIMARY KEY,
+	name VARCHAR(255) NOT NULL
+);
+CREATE TABLE members(
+	id SERIAL PRIMARY KEY,
+	name VARCHAR(255) NOT NULL,
+	date_of_birth DATE NOT NULL,
+	membertype_id INT REFERENCES membertypes(id)
+);
+CREATE TABLE classes(
+	id SERIAL PRIMARY KEY,
+	name VARCHAR(255) NOT NULL,
+	event_time TIMESTAMP NOT NULL,
+	capacity INT NOT NULL
+);
+CREATE TABLE bookings(
+	id SERIAL PRIMARY KEY,
+	member_id INT REFERENCES members(id) ON DELETE CASCADE,
+	class_id INT REFERENCES classes(id) ON DELETE CASCADE
+);

@@ -44,12 +44,10 @@ def edit_member(id):
 def create_member():
 	name = request.form["name"]
 	dob = request.form["dob"]
-	print(dob)
 	membertype_id = request.form["membertype_id"]
 	membertype = membertype_repository.select(membertype_id)
 	member = Member(name, dob, membertype)
 	member = member_repository.save(member)
-	print(member)
 	return redirect(f'/members/{member.id}')
 
 @members_blueprint.route("/members/<id>", methods=['POST'])

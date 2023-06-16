@@ -1,3 +1,4 @@
+import pdb
 from db.run_sql import run_sql
 from models.member import Member
 from models.membertype import MemberType
@@ -41,7 +42,7 @@ def select(id):
 
 
 def number_of_members(): # presumably faster than doing len(repo.select_all)
-	sql = "SELECT COUNT (*) FROM members;"
+	sql = "SELECT COUNT(*) as count FROM members;"
 	results = run_sql(sql)
 	return results[0]["count"]
 

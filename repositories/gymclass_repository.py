@@ -36,7 +36,7 @@ def select(id):
 	
 
 def number_of_classes():
-	sql = "SELECT COUNT (*) FROM classes;"
+	sql = "SELECT COUNT(*) as count FROM classes;"
 	results = run_sql(sql)
 	return results[0]["count"]
 	
@@ -60,7 +60,7 @@ def select_booked_members_for_class(id):
 
 
 def count_bookings_for_class(id):
-	sql = '''SELECT COUNT(*)
+	sql = '''SELECT COUNT(*) as count
 			FROM classes
 			JOIN bookings ON classes.id = bookings.class_id
 			JOIN members ON members.id = bookings.member_id
